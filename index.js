@@ -2,6 +2,7 @@ const express = require('express');
 //3.7: Phonebook backend step 7
 const morgan = require('morgan');
 const app = express();
+app.use(express.static('build'))
 //3.8*: Phonebook backend step 8
 morgan.token('jsonbody', function (req, res) { return JSON.stringify(req.body)})
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :jsonbody'));
@@ -42,9 +43,7 @@ const findName = (name) => {
 }
 
 
-app.get('/', (request, response) => {
-  response.send('<h1>Hello World!</h1>')
-})
+
 
 //3.1: Phonebook backend step 1
 app.get('/api/persons', (request, response) => {
